@@ -1,10 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os/exec"
+)
 
 func main() {
-	var message string
-	fmt.Print("Type a message to send ")
-	fmt.Scan(&message)
-	fmt.Println("Your message to be sent is:", message)
+	cmd := exec.Command("echo", "hello")
+	output, err := cmd.Output()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(output))
 }
+
